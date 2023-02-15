@@ -1,0 +1,19 @@
+{
+    "symbolic_links": [
+        {
+            "Application": "Visual Studio Code",
+            "source": "~/.vscode/extensions",
+            "target": "VscodeExtesion/extensions"
+        },
+        {
+            "Application": "Google Chrome",
+            "source": "~/Library/Application Support/Google/Chrome/Default/Extensions",
+            "target": "ChromeExtensions"
+        },
+        {
+            "Application": "Docker",
+            "source": "~/Library/Containers",
+            "target": "docker"
+        }
+    ]
+}
