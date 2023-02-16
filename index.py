@@ -2,19 +2,19 @@ import os
 import json
 # import code
 # import vscode
-
+import subprocess
 
 def code():
-    if os.system("code --version > /dev/null") == 1:
+    if os.system("code --version > /dev/null 2> /dev/null") == 32512:
         code = "export PATH=\"$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin\""
         with open(os.path.expanduser("~/.zshrc"), "a") as f:
             f.write(code)
-        os.system("source ~/.zshrc")
+        subprocess.call("source ~/.zshrc",shell=True,executable='/bin/zsh')
+    
 
 
 def vscode():
-    if os.system("code --version > /dev/null") != 0:
-        code()
+    code()
     os.system("code --list-extensions > list-extensions.txt")
 
 
@@ -37,8 +37,8 @@ for folder in folders_list:
         os.symlink(target, os.path.expanduser(source))
 
 # Install the extensions
-if os.system("code --version > /dev/null") != 0:
-    code()
+
+code()
 if not os.path.exists("list-extensions.txt"):
     vscode()
 with open("list-extensions.txt", "r") as f:
