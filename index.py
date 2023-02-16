@@ -1,7 +1,22 @@
 import os
 import json
-import code
-import vscode
+# import code
+# import vscode
+
+
+def code():
+    if os.system("code --version > /dev/null") == 1:
+        code = "export PATH=\"$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin\""
+        with open(os.path.expanduser("~/.zshrc"), "a") as f:
+            f.write(code)
+        os.system("source ~/.zshrc")
+
+
+def vscode():
+    if os.system("code --version > /dev/null") != 0:
+        code()
+    os.system("code --list-extensions > list-extensions.txt")
+
 
 # Get the user name
 user = os.environ["USER"]
